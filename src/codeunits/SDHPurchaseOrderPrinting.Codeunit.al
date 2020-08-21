@@ -14,7 +14,7 @@ codeunit 50000 "SDH Purchase Order Printing"
         IF PurchaseHeaderRecordRef.NUMBER <> DATABASE::"Purchase Header" THEN
             EXIT;
 
-        IF ReportUsage <> TempReportSelections.Usage::"P.Order".AsInteger() THEN
+        IF ReportUsage <> TempReportSelections.Usage::"P.Order" THEN
             EXIT;
 
         PurchaseHeader := RecordVariant;
@@ -23,11 +23,11 @@ codeunit 50000 "SDH Purchase Order Printing"
             PurchaseHeader."SDH Order Type"::" ":
                 EXIT;
             PurchaseHeader."SDH Order Type"::option1:
-                REPORT.RUNMODAL(60000, IsGUI, FALSE, RecordVariant);
+                REPORT.RUNMODAL(Report::"Purchase Order Opt 1", IsGUI, FALSE, RecordVariant);
             PurchaseHeader."SDH Order Type"::option2:
-                REPORT.RUNMODAL(60001, IsGUI, FALSE, RecordVariant);
+                REPORT.RUNMODAL(Report::"Purchase Order Opt 2", IsGUI, FALSE, RecordVariant);
             PurchaseHeader."SDH Order Type"::option3:
-                REPORT.RUNMODAL(60002, IsGUI, FALSE, RecordVariant);
+                REPORT.RUNMODAL(Report::"Purchase Order Opt 3", IsGUI, FALSE, RecordVariant);
         end;
 
         Handled := TRUE;
