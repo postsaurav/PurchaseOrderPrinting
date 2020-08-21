@@ -9,27 +9,30 @@ codeunit 50000 "SDH Purchase Order Printing"
         TempReportSelections: Record "Report Selections" temporary;
 
     begin
+        if Handled then
+          exit();
+          
         DataTypeManagement.GetRecordRef(RecordVariant, PurchaseHeaderRecordRef);
 
-        IF PurchaseHeaderRecordRef.NUMBER <> DATABASE::"Purchase Header" THEN
-            EXIT;
+        IF PurchaseHeaderRecordRef.Number <> DATABASE::"Purchase Header" then
+            exit();
 
-        IF ReportUsage <> TempReportSelections.Usage::"P.Order" THEN
-            EXIT;
+        IF ReportUsage <> TempReportSelections.Usage::"P.Order" then
+            exit();
 
         PurchaseHeader := RecordVariant;
 
-        CASE PurchaseHeader."SDH Order Type" OF
+        case PurchaseHeader."SDH Order Type" of
             PurchaseHeader."SDH Order Type"::" ":
-                EXIT;
+                exit();
             PurchaseHeader."SDH Order Type"::option1:
-                REPORT.RUNMODAL(Report::"Purchase Order Opt 1", IsGUI, FALSE, RecordVariant);
+                Report.RunModal(Report::"Purchase Order Opt 1", IsGUI, false, RecordVariant);
             PurchaseHeader."SDH Order Type"::option2:
-                REPORT.RUNMODAL(Report::"Purchase Order Opt 2", IsGUI, FALSE, RecordVariant);
+                Report.RunModal(Report::"Purchase Order Opt 2", IsGUI, false, RecordVariant);
             PurchaseHeader."SDH Order Type"::option3:
-                REPORT.RUNMODAL(Report::"Purchase Order Opt 3", IsGUI, FALSE, RecordVariant);
+                Report.RunModal(Report::"Purchase Order Opt 3", IsGUI, false, RecordVariant);
         end;
 
-        Handled := TRUE;
+        Handled := true;
     end;
 }
