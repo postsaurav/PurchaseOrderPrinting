@@ -1,0 +1,26 @@
+{
+  "id": "68eb1099-d97b-4937-a9ab-b6be2deace47",
+  "name": "Custom Purchase Report",
+  "publisher": "Saurav Dhyani",
+  "version": "1.0.0.0",
+  "brief": "Allow users to choose which custom Report to Print from Purchase Order.",
+  "description": "Adds an option in Purchase order. Based on Option value diffrent reports are called.",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "https://www.sauravdhyani.com/",
+  "url": "https://www.sauravdhyani.com/",
+  "logo": "",
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "14.0.0.0",
+  "application": "14.0.0.0",
+  "idRanges": [
+    {
+      "from": 50100,
+      "to": 50149
+    }
+  ],
+  "contextSensitiveHelpUrl": "https://CustomPurchaseReport.com/help/",
+  "showMyCode": true,
+  "runtime": "3.0"
+}
